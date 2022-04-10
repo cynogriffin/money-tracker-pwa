@@ -4,7 +4,7 @@
 
 This is an application for the user to track their finances by keeping a running total of their funds and show any additions or subtractions visually via text and graph. This application is meant to work in both online and offline states and can be installed by the user on desktop and mobile.
 
-![tacker home screen with graph of finances](https://github.com/cynogriffin/money-tracker-pwa/blob/main/assets/screenshot.PNG)
+![tacker home screen with graph of finances](https://github.com/cynogriffin/money-tracker-pwa/blob/main/assets/screenshot.png)
 
 This project demostrates the creation of an application that is a PWA (progressive web application), meaning that it can be installed and will function like a native mobile app. The app can be installed on both desktop and mobile and has tools built in to allow for full offline functionality and seamless transitions regardless of network conditions. While offline the app will serve data from the cache via a service worker, and store any submitted data via IndexedDB. Once the application comes back online, it will upload any data that was submitted whilst offline automatically.
 
