@@ -19,7 +19,7 @@ request.onsuccess = function(event) {
 
     // check if online, if yes run function to send all local data to api
     if (navigator.onLine) {
-
+        uploadMoney();
     }
 };
 
@@ -39,3 +39,49 @@ function saveRecord(record) {
     // add record to store with add method
     moneyObjectStore.add(record);
 }
+
+function uploadMoney() {
+    // open transaction on db
+    const transaction = db.transaction(['new_money'], 'readwrite');
+
+    // access the object store
+    const moneyObjectStore = transaction.objectStore('new_money');
+
+    // get all records from store and set to variable
+    const getAll = moneyObjectStore.getAll();
+
+    // upon successful getAll, run...
+    getAll.onsuccess = function() {
+        // if there is data in the store, send to api server
+        if (getAll.result.length > 0) {
+            fetch('/api/transaction', {
+                method: 'POST',
+                body: JSON.stringify(getAll.result),
+                headers: {
+                    Accept: 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(serverResponse => {
+                    if (serverResponse.message) {
+                        throw new Error(serverResponse);
+                    }
+                    // open one more transaction
+                    const transaction = db.transaction(['new_money'], 'readwrite');
+                    // access the store
+                    const moneyObjectStore = transaction.objectStore('new_money');
+                    // clear all items in the store
+                    moneyObjectStore.clear();
+
+                    alert('All saved transactions have been submitted!');
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+    };
+};
+
+// listen for app coming back online
+window.addEventListener('online', uploadMoney);
