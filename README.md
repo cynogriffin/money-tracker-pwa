@@ -40,6 +40,7 @@ You can view my other projects on GitHub: [cynogriffin](https://github.com/cynog
 
 If you have any questions or comments, please feel free to contact me via email at griffinc6@gmail.com.
 
+Connect with me on [LinkedIn](https://www.linkedin.com/in/cody-griffin-0a74b1222/) and catch me on my develper blog [The Cozy Coding Corner](https://cynogriffin.hashnode.dev/)!
 
 ---
 Copyright &copy; 2022 Cody Griffin. All rights reserved.
