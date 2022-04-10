@@ -3,13 +3,11 @@ const VERSION = 'version_01';
 const CACHE_NAME = APP_PREFIX + VERSION;
 
 const FILES_TO_CACHE = [
-    "./",
     "./index.html",
     "./manifest.json",
-    "./css/style.css",
+    "./css/styles.css",
     "./js/idb.js",
-    "./js/index.js",
-    "./icons/icon-72x72"
+    "./js/index.js"
 ];
 
 self.addEventListener('install', function(e) {
